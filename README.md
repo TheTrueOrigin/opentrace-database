@@ -75,7 +75,8 @@ Um ein neues Produkt zu erstellen, folge dem folgenden Format. Beispiel: Meßmer
 Nachdem alle Dateien erstellt wurden, kannst du sie mit `python build.py` zusammenfügen.
 Der Skript formatiert alle Allergene, Labels, Nährwerte, Unternehmen, Zutaten und Produkte und fügt sie der Datenbank hinzu.
 > [!WARNING]
-> Allergene, Labels, Nährwerte, Zutaten und Medien müssen dieselbe Bezeichnung wie die Produkt-Datei haben. (Bsp: meßmer-tee-klassik.txt) <br>
+> Allergene, Labels, Nährwerte, Zutaten und Medien müssen dieselbe Bezeichnung wie die Produkt-Datei haben. (Bsp: meßmer-tee-klassik.txt)
+
 Die Datenbank wird in der Datei `database.db` gespeichert. Sie besteht aus 6 Tabellen:
 - `Produkte` - Produkte, die in der Datenbank verfügbar sind
 - `Zutaten` - Zutaten, aus denen die Produkte bestehen
