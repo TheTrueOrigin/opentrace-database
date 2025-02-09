@@ -5,6 +5,7 @@ Datenbank für OpenTrace mobile App. Füge deine eigenen Produkte hinzu.
 Dieses Github-Repository besteht aus drei Hauptteilen:
 - `Produkte` - Produkte, die in der Datenbank verfügbar sind
 - `Unternehmen` - Unternehmen, die Produkte/Bestandteile herstellen
+- `Bestandteile` - Bestandteile, die in den Produkten enthalten sind
 - `Medien` - Medien-Dateien für die Datenbank
 
 > [!TIP]
