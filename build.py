@@ -112,7 +112,6 @@ for produkt_datei in [produkt for produkt in os.listdir(produkte_pfad) if produk
             elif line.startswith("[Label]"):
                 produkte[produkt_name]["Labels"].append(line[7:].strip())
 
-print(produkte, "\n", bestandteile, "\n", unternehmen)
 ### Datenbank erstellen ###
 conn = sqlite3.connect(db_pfad)
 cursor = conn.cursor()
@@ -165,6 +164,17 @@ cursor.execute("""
     );
     """)
 
+# Bestandteile
+cursor.execute("""
+    CREATE TABLE IF NOT EXISTS Bestandteile (
+        Bestandteil_ID INTEGER PRIMARY KEY AUTOINCREMENT,
+        Unternehmen_ID INTEGER,
+        Name TEXT,
+        Herstellungsort TEXT,
+        FOREIGN KEY (Unternehmen_ID) REFERENCES Unternehmen(id) ON DELETE CASCADE
+    );
+    """)
+
 # Produkte_Labels
 cursor.execute("""
     CREATE TABLE IF NOT EXISTS Produkte_Labels (
@@ -195,17 +205,6 @@ cursor.execute("""
         PRIMARY KEY (Produkt_ID, Bestandteil_ID),
         FOREIGN KEY (Produkt_ID) REFERENCES Produkte(id) ON DELETE CASCADE,
         FOREIGN KEY (Bestandteil_ID) REFERENCES Bestandteile(id) ON DELETE CASCADE
-    );
-    """)
-
-# Bestandteile
-cursor.execute("""
-    CREATE TABLE IF NOT EXISTS Bestandteile (
-        Bestandteil_ID INTEGER PRIMARY KEY AUTOINCREMENT,
-        Unternehmen_ID INTEGER,
-        Name TEXT,
-        Herstellungsort TEXT,
-        FOREIGN KEY (Unternehmen_ID) REFERENCES Unternehmen(id) ON DELETE CASCADE
     );
     """)
 
@@ -247,7 +246,7 @@ for bestandteil_name, bestandteil_info in bestandteile.items():
         unternehmen_id = unternehmen_ids[unternehmen_name]
         cursor.execute("""
             INSERT INTO Bestandteile (Unternehmen_ID, Name, Herstellungsort) VALUES ({}, '{}', '{}');
-        """.format(unternehmen_id, bestandteil_info["Name"], produkt_info["Herstellungsort"]))
+        """.format(unternehmen_id, bestandteil_info["Name"], bestandteil_info["Herstellungsort"]))
         bestandteile_ids[bestandteil_info["Name"]] = cursor.lastrowid
 
 # Produkte
@@ -298,3 +297,19 @@ for produkt_name, produkt_info in produkte.items():
         cursor.execute("""
             INSERT INTO Produkte_Bestandteile (Produkt_ID, Bestandteil_ID) VALUES ({}, {});
         """.format(produkt_id, bestandteil_id))
+
+### Beispiel-Anwendung ###
+product = cursor.execute("SELECT * FROM Produkte LIMIT 1").fetchone()
+company = cursor.execute("SELECT * FROM Unternehmen WHERE id = ?", (product[1],)).fetchone()
+bestandteile = [cursor.execute("SELECT * FROM Bestandteile WHERE Bestandteil_ID = ?", (bestandteil_id[1],)).fetchone() for bestandteil_id in cursor.execute("SELECT * FROM Produkte_Bestandteile WHERE Produkt_ID = ?", (product[0],)).fetchall()]
+
+text = f"""Das Produkt {product[2]} hat den Barcode {product[3]} und ist {product[4]} groß.
+Es ist aus {product[6]} und es ist ein {product[5]}.
+Der Brennwert beträgt {product[7]} kcal und der Fettgehalt {product[8]} pro 100g/100ml.
+Das Unternehmen ist {company[1]} und wurde im Jahr {company[3]} gegründet.
+Der Sitz ist in {company[2]}. Weitere Informationen unter {company[4]}.
+"""
+
+for bestandteil in bestandteile:
+    text += f"""Das Produkt besteht aus {bestandteil[2]}, welches in {bestandteil[3]} hergestellt wird von der Firma {cursor.execute("SELECT * FROM Unternehmen WHERE id = ?", (bestandteil[1],)).fetchone()[1]}.\n"""
+print(text)
