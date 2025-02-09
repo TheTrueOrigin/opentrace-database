@@ -2,85 +2,131 @@
 Datenbank für OpenTrace mobile App. Füge deine eigenen Produkte hinzu.
 
 ## Überblick
-Dieses Github-Repository besteht aus drei Hauptfeldern:
+Dieses Github-Repository besteht aus drei Hauptteilen:
 - `Produkte` - Produkte, die in der Datenbank verfügbar sind
-- `Zutaten` - Zutaten, aus denen die Produkte bestehen
-- `Unternehmen` - Unternehmen, die die Produkte herstellen
+- `Unternehmen` - Unternehmen, die Produkte/Bestandteile herstellen
 - `Medien` - Medien-Dateien für die Datenbank
-- `Nährwerte` - Nährwerte für die Produkte
-- `Allergene` - Allergene für die Produkte
-- `Labels` - Labels für die Produkte
 
 > [!TIP]
 > Du kannst ein Issue oder einen Pull Request erstellen, um deine eigenen Produkte hinzuzufügen.
-> Um deine eigene Datenbank zu erhalten, kannst du entweder die Release-Datei herunterladen oder sie mit `python build.py` erstellen.
+> Um deine eigene Datenbank zu erhalten, kannst du entweder die Release-Datei herunterladen oder sie mit `python build.py` erstellen.<br>
+> Verwende die Dateien [Produkte-Beispiel](./Produkte/beispiel.txt) und [Unternehmen-Beispiel](./Unternehmen/beispiel.txt) als Vorlagen.
 
 ## Format
-Um ein neues Produkt zu erstellen, folge dem folgenden Format. Beispiel: Meßmer Tee Klassik
-1. Erstelle eine neue Datei im `Produkte` Ordner. Beispiel: `meßmer-tee-klassik.txt`
+Um ein neues Produkt zu erstellen, folge dem folgenden Format.
+1. Erstelle eine neue Datei im `Produkte` Ordner. Ersetze Leerzeichen mit einem Unterstrich. Das Produkt besteht aus:
+- `Name` - Produktname
+- `Barcode` - Barcode des Produkts
+- `Unternehmen` - Hersteller des Produkts
+- `Größe` - Größe des Produkts
+- `Kategorie` - Kategorie des Produkts
+- `Herstellungsort` - Herstellungsort des Produkts
+- `Nährwerte` Nährwerte in 100g/ml aufgeteilt in:
+    - `Brennwert` - Brennwert des Produkts
+    - `Fettgehalt` - Fettgehalt des Produkts
+    - `Gesättigte Fettsäuren` - Gesättigte Fettsäuren des Produkts
+    - `Kohlenhydrate` - Kohlenhydrate des Produkts
+    - `Zuckergehalt` - Zuckergehalt des Produkts
+    - `Eiweißgehalt` - Eiweißgehalt des Produkts
+    - `Salzgehalt` - Salzgehalt des Produkts
+- `Bestandteile` Mehrere Bestandteile aufgeteilt in:
+    - `Bestandteil` - Name des Bestandteils
+- `Allergene` Mehrere Allergene aufgeteilt in:
+    - `Allergen` - Name des Allergens
+- `Labels` Mehrere Labels aufgeteilt in:
+    - `Label` - Name des Labels
+
+> [!TIP]
+> Nährwerte gelten pro 100g, bzw. 100ml.
+
+Beispiel: `meßmer_tee_klassik.txt`
 ```
-[Produkt]
 [Name] Meßmer Tee Klassik
 [Barcode] 4001257218503
 [Unternehmen] Meßmer
 [Größe] 20pcs
 [Kategorie] Tee
+[Herstellungsort] Österreich
+
+[Nährwerte]
+[Brennwert] 3kJ/1kcal
+[Fettgehalt] 0g
+[Gesättigte Fettsäuren] 0g
+[Kohlenhydrate] 0.2g
+[Zuckergehalt] 0.1g
+[Eiweißgehalt] 0g
+[Salzgehalt] 0,01g
+
+[Bestandteile]
+[Bestandteil] Tata Tea Limited Schwarztee Blätter
+[Bestandteil] Nalli Silks Seide
+[Bestandteil] Geissinger Karton Verpackung
+
+[Allergene]
+[Allergen] Histamin
+
+[Labels]
+[Label] Glutenfrei
 ```
-2. Füge eine Produkt-Bilddatei zum `Medien` Ordner hinzu. Beispiel: `meßmer-tee-klassik.png`
-3. Füge eine Unternehmen-Datei zum `Unternehmen` Ordner hinzu. Beispiel: `meßmer.txt`
+2. Füge eine Produkt-Bilddatei zum `Medien` Ordner hinzu. Beispiel: `meßmer_tee_klassik.png`
+
+> [!WARNING]
+> Die Datei muss denselben Namen haben wie die Produkt-Datei. Ersetze Leerzeichen mit einem Unterstrich.
+
+3. Erstelle eine Datei für das Unternehmen. Beispiel: `meßmer.txt`
 ```
 [Unternehmen]
 [Name] Meßmer
 [Land] Österreich
-[Gründzung] 1990
+[Gründung] 1990
 [Website] https://www.meßmer.at
 ```
-4. Füge eine Zutatendatei zum `Zutaten` Ordner hinzu. Beispiel: `meßmer-tee-klassik.txt`
-```
-[Zutaten]
-[Zutat] Tata Tea Limited Schwarztee Blätter
-[Herkunftsland] Indien
-[Unternehmen] Tata Tea Limited
-
-[Zutat] Nalli Silks Seide
-[Herkunftsland] Indien
-[Unternehmen] Nalli Silks Seide
-
-[Zutat] Geissinger Karton Verpackung
-[Herkunftsland] Österreich
-[Unternehmen] Geissinger
-```
-4. Füge eine Nährwertdatei zum `Nährwerte` Ordner hinzu. Beispiel: `meßmer-tee-klassik.txt`. (pro 100g/ml)
-```
-[Nährwerte]
-[Brennwert] 3kJ/1kcal
-[Fett] 0g
-[Gesättigte Fettsäuren] 0g
-[Kohlenhydrate] 0.2g
-[Zucker] 0.1g
-[Eiweiß] 0g
-[Salz] 0,01g
-```
-5. Füge eine Allergenen-Datei zum `Allergene` Ordner hinzu. Beispiel: `meßmer-tee-klassik.txt`
-```
-[Allergene]
-[Allergen] Histamin
-```
-6. Füge eine Labels-Datei zum `Labels` Ordner hinzu. Beispiel: `meßmer-tee-klassik.txt`
-```
-[Labels]
-[Label] Glutenfrei
-```
-## Zusammenfügen in die Datenbank
-Nachdem alle Dateien erstellt wurden, kannst du sie mit `python build.py` zusammenfügen.
-Der Skript formatiert alle Allergene, Labels, Nährwerte, Unternehmen, Zutaten und Produkte und fügt sie der Datenbank hinzu.
 > [!WARNING]
-> Allergene, Labels, Nährwerte, Zutaten und Medien müssen dieselbe Bezeichnung wie die Produkt-Datei haben. (Bsp: meßmer-tee-klassik.txt)
+> Die Datei muss denselben Namen haben wie das Unternehmen in der Produkt-Datei. Ersetze Leerzeichen mit einem Unterstrich.
 
-Die Datenbank wird in der Datei `database.db` gespeichert. Sie besteht aus 6 Tabellen:
-- `Produkte` - Produkte, die in der Datenbank verfügbar sind
-- `Zutaten` - Zutaten, aus denen die Produkte bestehen
-- `Unternehmen` - Unternehmen, die die Produkte herstellen
-- `Nährwerte` - Nährwerte für die Produkte
-- `Allergene` - Allergene für die Produkte
-- `Labels` - Labels für die Produkte
+4. Erstelle eine Datei für jedes Bestandteil. Beispiel: `tata_tea_limited_schwarztee_blätter.txt`
+```
+[Bestandteil]
+[Name] Tata Tea Limited Schwarztee Blätter
+[Herstellungsort] Indien
+[Unternehmen] Tata Tea Limited
+```
+> [!WARNING]
+> Die Datei muss denselben Namen haben wie das Bestandteil in der Produkt-Datei. Ersetze Leerzeichen mit einem Unterstrich.
+
+> [!TIP]
+> Wenn ein Bestandteile verschiedene Herstellungsorte hat, erstelle eine Datei für jeden Herstellungsort und füge den 
+> Herstellungsort in dem Dateinamen an. Entsprechend muss der Bestandteilname in der Produkt-Datei angepasst werden.
+
+## Zusammenfügen in die Datenbank
+Produkt- und Unternehmen-Dateien werden mit `python build.py` zusammengefügt.
+Der Skript formatiert alle Produktdetails und Unternehmen und fügt sie der Datenbank hinzu.
+
+Die Datenbank wird in der Datei `database.db` gespeichert. Sie besteht aus 5 Tabellen:
+- `Produkte`
+    - `Name` - Produktname
+    - `Barcode` - Barcode des Produkts
+    - `Unternehmen` - Hersteller des Produkts
+    - `Größe` - Größe des Produkts
+    - `Kategorie` - Kategorie des Produkts
+    - `Herstellungsort` - Herstellungsort des Produkts
+    - `Brennwert` - Brennwert des Produkts
+    - `Fettgehalt` - Fettgehalt des Produkts
+    - `Gesättigte Fettsäuren` - Gesättigte Fettsäuren des Produkts
+    - `Kohlenhydrate` - Kohlenhydrate des Produkts
+    - `Zuckergehalt` - Zuckergehalt des Produkts
+    - `Eiweißgehalt` - Eiweißgehalt des Produkts
+    - `Salzgehalt` - Salzgehalt des Produkts
+- `Unternehmen`
+    - `Name` - Name des Unternehmens
+    - `Land` - Herstellungsort des Unternehmens
+    - `Gründzung` - Gründungsjahr des Unternehmens
+    - `Website` - Website des Unternehmens
+- `Bestandteile`
+    - `Name` - Name des Bestandteils
+    - `Herstellungsort` - Herkunftsland des Bestandteils
+    - `Unternehmen` - Hersteller des Bestandteils
+- `Allergene`
+    - `Allergen` - Name des Allergens
+- `Labels`
+    - `Label` - Name des Labels

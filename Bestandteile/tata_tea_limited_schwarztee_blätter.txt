@@ -1,0 +1,4 @@
+[Bestandteil]
+[Name] Tata Tea Limited Schwarztee Blätter
+[Herstellungsort] Indien
+[Unternehmen] Tata Tea Limited
