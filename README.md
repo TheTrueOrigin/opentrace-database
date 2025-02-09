@@ -103,7 +103,7 @@ Beispiel: `meßmer_tee_klassik.txt`
 Produkt- und Unternehmen-Dateien werden mit `python build.py` zusammengefügt.
 Der Skript formatiert alle Produktdetails und Unternehmen und fügt sie der Datenbank hinzu.
 
-Die Datenbank wird in der Datei `database.db` gespeichert. Sie besteht aus 5 Tabellen:
+Die Datenbank wird in der Datei `database.db` gespeichert. Sie besteht aus 5 Haupttabellen:
 - `Produkte`
     - `Name` - Produktname
     - `Barcode` - Barcode des Produkts
