@@ -109,7 +109,6 @@ Die Datenbank wird in der Datei `database.db` gespeichert. Sie besteht aus 5 Hau
     - `Unternehmen_ID` - ID des Herstellers
     - `Name` - Produktname
     - `Barcode` - Barcode des Produkts
-    - `Unternehmen_ID` - Hersteller des Produkts
     - `Größe` - Größe des Produkts
     - `Kategorie` - Kategorie des Produkts
     - `Herstellungsort` - Herstellungsort des Produkts
