@@ -113,6 +113,9 @@ for produkt_datei in [produkt for produkt in os.listdir(produkte_pfad) if produk
                 produkte[produkt_name]["Labels"].append(line[7:].strip())
 
 ### Datenbank erstellen ###
+# Datenbank löschen, falls sie existiert
+if os.path.exists(db_pfad):
+    os.remove(db_pfad)
 conn = sqlite3.connect(db_pfad)
 cursor = conn.cursor()
 
@@ -297,3 +300,7 @@ for produkt_name, produkt_info in produkte.items():
         cursor.execute("""
             INSERT INTO Produkte_Bestandteile (Produkt_ID, Bestandteil_ID) VALUES ({}, {});
         """.format(produkt_id, bestandteil_id))
+
+# Commit the database
+conn.commit()
+conn.close()
