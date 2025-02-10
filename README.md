@@ -107,7 +107,7 @@ Die Datenbank wird in der Datei `database.db` gespeichert. Sie besteht aus 5 Hau
 - `Produkte`
     - `Name` - Produktname
     - `Barcode` - Barcode des Produkts
-    - `Unternehmen` - Hersteller des Produkts
+    - `Unternehmen_ID` - Hersteller des Produkts
     - `Größe` - Größe des Produkts
     - `Kategorie` - Kategorie des Produkts
     - `Herstellungsort` - Herstellungsort des Produkts
@@ -126,7 +126,7 @@ Die Datenbank wird in der Datei `database.db` gespeichert. Sie besteht aus 5 Hau
 - `Bestandteile`
     - `Name` - Name des Bestandteils
     - `Herstellungsort` - Herkunftsland des Bestandteils
-    - `Unternehmen` - Hersteller des Bestandteils
+    - `Unternehmen_ID` - Hersteller des Bestandteils
 - `Allergene`
     - `Allergen` - Name des Allergens
 - `Labels`
