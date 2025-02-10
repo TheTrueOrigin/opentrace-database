@@ -105,6 +105,8 @@ Der Skript formatiert alle Produktdetails und Unternehmen und fügt sie der Date
 
 Die Datenbank wird in der Datei `database.db` gespeichert. Sie besteht aus 5 Haupttabellen:
 - `Produkte`
+    - `id` - ID des Produkts
+    - `Unternehmen_ID` - ID des Herstellers
     - `Name` - Produktname
     - `Barcode` - Barcode des Produkts
     - `Unternehmen_ID` - Hersteller des Produkts
@@ -119,15 +121,20 @@ Die Datenbank wird in der Datei `database.db` gespeichert. Sie besteht aus 5 Hau
     - `Eiweißgehalt` - Eiweißgehalt des Produkts
     - `Salzgehalt` - Salzgehalt des Produkts
 - `Unternehmen`
+    - `id` - ID des Unternehmens
     - `Name` - Name des Unternehmens
     - `Land` - Herstellungsort des Unternehmens
     - `Gründzung` - Gründungsjahr des Unternehmens
     - `Website` - Website des Unternehmens
 - `Bestandteile`
+    - `id` - ID des Bestandteils
+    - `Unternehmen_ID` - ID des Herstellers
     - `Name` - Name des Bestandteils
     - `Herstellungsort` - Herkunftsland des Bestandteils
     - `Unternehmen_ID` - Hersteller des Bestandteils
 - `Allergene`
+    - `id` - ID des Allergens
     - `Allergen` - Name des Allergens
 - `Labels`
+    - `id` - ID des Labels
     - `Label` - Name des Labels
