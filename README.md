@@ -130,7 +130,6 @@ Die Datenbank wird in der Datei `database.db` gespeichert. Sie besteht aus 5 Hau
     - `Unternehmen_ID` - ID des Herstellers
     - `Name` - Name des Bestandteils
     - `Herstellungsort` - Herkunftsland des Bestandteils
-    - `Unternehmen_ID` - Hersteller des Bestandteils
 - `Allergene`
     - `id` - ID des Allergens
     - `Allergen` - Name des Allergens
