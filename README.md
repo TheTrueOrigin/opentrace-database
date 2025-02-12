@@ -136,3 +136,8 @@ Die Datenbank wird in der Datei `database.db` gespeichert. Sie besteht aus 5 Hau
 - `Labels`
     - `id` - ID des Labels
     - `Label` - Name des Labels
+
+## Endpunkte
+- `/produkt/id/{id}` - Gibt das Produkt mit jeweiliger ID im JSON-Format aus
+- `/produkt/barcode/{barcode}` - Gibt das Produkt mit jeweiligem Barcode im JSON-Format aus
+- `/produkt/name/{name}` - Gibt Produkte mit ähnlichem Namen im JSON-Format aus
