@@ -1,5 +1,6 @@
 ### Imports ###
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 import sqlite3
 import os
 import re
@@ -44,6 +45,14 @@ class Produkt(BaseModel):
 
 # FastAPI app
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Datenbank
 conn = sqlite3.connect(db_pfad, check_same_thread=False)
@@ -198,7 +207,7 @@ def get_item(data: Produkt):
         with open(unternehmen_pfad, "w") as file:
             file.write(company_content)
 
-    """# Bild hinzufügen, falls noch nicht vorhanden
+    # Bild hinzufügen, falls noch nicht vorhanden
     bild_pfad = os.path.join(os.path.dirname(__file__), "Medien", data.Unternehmen.Name.strip().replace(" ", "_").lower()+".jpg")
     if not os.path.exists(bild_pfad):
         if data.Bild.startswith("data:image/jpeg;base64,"):
@@ -213,7 +222,7 @@ def get_item(data: Produkt):
         else:
             return {"status_code": 2, "status_message": "Invalides Bild"}
     else:
-        return {"status_code": 3, "status_message": "Bild existiert schon"}"""
+        return {"status_code": 3, "status_message": "Bild existiert schon"}
         
     # Bestandteile hinzufügen falls noch nicht vorhanden
     bestandteile_content = ""
