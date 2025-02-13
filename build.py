@@ -70,7 +70,7 @@ for produkt_datei in [produkt for produkt in os.listdir(produkte_pfad) if produk
                 name = line[6:].strip()
                 if produkt_name.lower() != name.replace(" ", "_").lower():
                     raise Exception(f"Produktname {name} stimmt nicht mit Dateiname '{produkt_name}.txt' überein")
-                if not os.path.exists(os.path.join(os.path.dirname(__file__), "Medien", "{}.jpg".format(name.replace(" ", "_").lower()))):
+                if not os.path.exists(os.path.join(medien_pfad, "{}.jpg".format(name.replace(" ", "_").lower()))):
                     raise Exception(f"Kein Medium für Produkt {name}")
                 produkte[produkt_name]["Name"] = name
             elif line.startswith("[Barcode]"):
