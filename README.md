@@ -4,10 +4,9 @@ Die OpenTrace-Datenbank ist ein Open-Source-Projekt, das es ermöglicht, Informa
 Diese Datenbank wird durch Beiträge von der Open-Source-Community kontinuierlich erweitert. Jeder kann Produkte und deren Details hinzufügen, aktualisieren oder korrigieren, um sicherzustellen, dass die App stets mit den neuesten und genauesten Informationen versorgt wird. Um eine hohe Qualität der Daten zu gewährleisten, erfolgt die Verwaltung der Beiträge über ein GitHub-Repository, in dem alle Änderungen nachvollziehbar sind.
 
 ## Eigenen Beitrag
-1. Fork der Repository erstellen
-2. Eigenen Fork clonen `git clone https://github.com/username/opentrace-database`
-3. Änderungen vornehmen (s. unten)
-4. Pull-Request erstellen
+1. [Produkt hier hinzufügen](https://github.com/TheTrueOrigin/opentrace-database/new/main?filename=Produkte/neu.txt&value=[Name]%20Name%0A[Barcode]%20Barcode%0A[Unternehmen]%20Unternehmen%0A[Größe]%20Größe%0A[Kategorie]%20Kategorie%0A[Herstellungsort]%20Ort%0A%0A[Nährwerte]%0A[Brennwert]%20Brennwert%0A[Fettgehalt]%20Fettgehalt%0A[Gesättigte%20Fettsäuren]%20Gesättigte%20Fettsäuren%0A[Kohlenhydrate]%20Kohlenhydrate%0A[Zuckergehalt]%20Zuckergehalt%0A[Eiweißgehalt]%20Eiweißgehalt%0A[Salzgehalt]%20Salzgehalt%0A%0A[Bestandteile]%0A[Bestandteil]%20Bestandteil%201%0A[Bestandteil]%20Bestandteil%202%20%0A(weitere%20Bestandteile)%0A%0A[Allergene]%0A[Allergen]%20Allergen%201%0A[Allergen]%20Allergen%202%0A(weitere%20Allergene)%0A%0A[Labels]%0A[Label]%20Label%201%0A[Label]%20Label%202%0A(weitere%20Labels))
+2. [Unternehmen hier hinzufügen](https://github.com/TheTrueOrigin/opentrace-database/new/main?filename=Unternehmen/neu.txt&value=[Unternehmen]%0A[Name]%20Name%0A[Land]%20Land%0A[Gründung]%20Gründung%0A[Website]%20Website)
+3. [Bestandteil hier hinzufügen](https://github.com/TheTrueOrigin/opentrace-database/new/main?filename=Bestandteile/neu.txt&value=[Bestandteil]%0A[Name]%20Name%0A[Herstellungsort]%20Ort%0A[Unternehmen]%20Unternehmen)
 
 ## Überblick
 Dieses Github-Repository besteht aus vier Hauptteilen:
