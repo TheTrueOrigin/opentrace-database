@@ -1,0 +1,26 @@
+[Name] Meßmer Früchtetee
+[Barcode] 4001257218504
+[Unternehmen] Meßmer
+[Größe] 20pcs
+[Kategorie] Tee
+[Herstellungsort] Österreich
+
+[Nährwerte]
+[Brennwert] 3kJ/1kcal
+[Fettgehalt] 0g
+[Gesättigte Fettsäuren] 0g
+[Kohlenhydrate] 0.2g
+[Zuckergehalt] 0.1g
+[Eiweißgehalt] 0g
+[Salzgehalt] 0,01g
+
+[Bestandteile]
+[Bestandteil] Tata Tea Limited Früchtetee Blätter
+
+[Allergene]
+[Allergen] Histamin
+[Allergen] Früchte
+
+[Labels]
+[Label] Glutenfrei
+[Label] Vegan
