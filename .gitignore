@@ -172,3 +172,5 @@ cython_debug/
 database.db
 
 .DS_Store
+
+test.py

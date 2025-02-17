@@ -9,8 +9,8 @@
 [Brennwert] 3kJ/1kcal
 [Fettgehalt] 0g
 [Gesättigte Fettsäuren] 0g
-[Kohlenhydrate] 0.2g
-[Zuckergehalt] 0.1g
+[Kohlenhydrate] 0,2g
+[Zuckergehalt] 0,1g
 [Eiweißgehalt] 0g
 [Salzgehalt] 0,01g
 
