@@ -16,6 +16,8 @@
 
 [Bestandteile]
 [Bestandteil] Tata Tea Limited Früchtetee Blätter
+[Bestandteil] Nalli Silks Seide
+[Bestandteil] Geissinger Karton Verpackung
 
 [Allergene]
 [Allergen] Histamin
