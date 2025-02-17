@@ -1,4 +1,4 @@
 [Bestandteil]
 [Name] Nalli Silks Seide
-[Herstellungsort] Indien
+[Herstellungsort] IN
 [Unternehmen] Nalli Silks

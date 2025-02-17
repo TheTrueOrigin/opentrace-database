@@ -35,7 +35,10 @@ for unternehmen_datei in [unternehmen for unternehmen in os.listdir(unternehmen_
                     raise Exception(f"Unternehmensname {name} stimmt nicht mit Dateiname '{unternehmen_name}.txt' überein")
                 unternehmen[unternehmen_name]["Name"] = name
             elif line.startswith("[Land]"):
-                unternehmen[unternehmen_name]["Land"] = line[6:].strip()
+                _land = line[6:].strip()
+                if len(_land) != 2:
+                    raise Exception(f"Invalider Ländercode {_land}")
+                unternehmen[unternehmen_name]["Land"] = _land.upper()
             elif line.startswith("[Gründung]"):
                 unternehmen[unternehmen_name]["Gründung"] = line[10:].strip()
             elif line.startswith("[Website]"):
@@ -53,7 +56,10 @@ for bestandteil_datei in [bestandteil for bestandteil in os.listdir(bestandteile
             if line.startswith("[Name]"):
                 bestandteile[bestandteil_name]["Name"] = line[6:].strip()
             elif line.startswith("[Herstellungsort]"):
-                bestandteile[bestandteil_name]["Herstellungsort"] = line[17:].strip()
+                _land = line[17:].strip()
+                if len(_land) != 2:
+                    raise Exception(f"Invalider Ländercode {_land}")
+                bestandteile[bestandteil_name]["Herstellungsort"] = _land.upper()
             elif line.startswith("[Unternehmen]"):
                 bestandteile[bestandteil_name]["Unternehmen"] = line[13:].strip()
 
@@ -82,7 +88,10 @@ for produkt_datei in [produkt for produkt in os.listdir(produkte_pfad) if produk
             elif line.startswith("[Kategorie]"):
                 produkte[produkt_name]["Kategorie"] = line[11:].strip()
             elif line.startswith("[Herstellungsort]"):
-                produkte[produkt_name]["Herstellungsort"] = line[17:].strip()
+                _land = line[17:].strip()
+                if len(_land) != 2:
+                    raise Exception(f"Invalider Ländercode {_land}")
+                produkte[produkt_name]["Herstellungsort"] = _land.upper()
 
             elif line.startswith("[Brennwert]"):
                 produkte[produkt_name]["Brennwert"] = line[11:].strip()

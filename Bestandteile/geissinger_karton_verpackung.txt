@@ -1,4 +1,4 @@
 [Bestandteil]
 [Name] Geissinger Karton Verpackung
-[Herstellungsort] Österreich
+[Herstellungsort] AT
 [Unternehmen] Geissinger

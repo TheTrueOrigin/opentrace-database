@@ -28,7 +28,7 @@ Um ein neues Produkt zu erstellen, folge dem folgenden Format.
 - `Unternehmen` - Hersteller des Produkts
 - `Größe` - Größe des Produkts
 - `Kategorie` - Kategorie des Produkts
-- `Herstellungsort` - Herstellungsort des Produkts
+- `Herstellungsort` - Herstellungsort des Produkts (2-stelliger Ländercode)
 - `Nährwerte` Nährwerte in 100g/ml aufgeteilt in:
     - `Brennwert` - Brennwert des Produkts
     - `Fettgehalt` - Fettgehalt des Produkts
@@ -54,7 +54,7 @@ Beispiel: `meßmer_tee_klassik.txt`
 [Unternehmen] Meßmer
 [Größe] 20pcs
 [Kategorie] Tee
-[Herstellungsort] Österreich
+[Herstellungsort] AT
 
 [Nährwerte]
 [Brennwert] 3kJ/1kcal
@@ -85,7 +85,7 @@ Beispiel: `meßmer_tee_klassik.txt`
 ```
 [Unternehmen]
 [Name] Meßmer
-[Land] Österreich
+[Land] AT
 [Gründung] 1990
 [Website] https://www.meßmer.at
 ```
@@ -96,7 +96,7 @@ Beispiel: `meßmer_tee_klassik.txt`
 ```
 [Bestandteil]
 [Name] Tata Tea Limited Schwarztee Blätter
-[Herstellungsort] Indien
+[Herstellungsort] IN
 [Unternehmen] Tata Tea Limited
 ```
 > [!WARNING]
@@ -118,7 +118,7 @@ Die Datenbank wird in der Datei `database.db` gespeichert. Sie besteht aus 5 Hau
     - `Barcode` - Barcode des Produkts
     - `Größe` - Größe des Produkts
     - `Kategorie` - Kategorie des Produkts
-    - `Herstellungsort` - Herstellungsort des Produkts
+    - `Herstellungsort` - Herstellungsort des Produkts (2-stelliger Ländercode)
     - `Brennwert` - Brennwert des Produkts
     - `Fettgehalt` - Fettgehalt des Produkts
     - `Gesättigte Fettsäuren` - Gesättigte Fettsäuren des Produkts
@@ -129,14 +129,14 @@ Die Datenbank wird in der Datei `database.db` gespeichert. Sie besteht aus 5 Hau
 - `Unternehmen`
     - `id` - ID des Unternehmens
     - `Name` - Name des Unternehmens
-    - `Land` - Herstellungsort des Unternehmens
-    - `Gründzung` - Gründungsjahr des Unternehmens
+    - `Land` - Herstellungsort des Unternehmens (2-stelliger Ländercode)
+    - `Gründung` - Gründungsjahr des Unternehmens
     - `Website` - Website des Unternehmens
 - `Bestandteile`
     - `id` - ID des Bestandteils
     - `Unternehmen_ID` - ID des Herstellers
     - `Name` - Name des Bestandteils
-    - `Herstellungsort` - Herkunftsland des Bestandteils
+    - `Herstellungsort` - Herkunftsland des Bestandteils (2-stelliger Ländercode)
 - `Allergene`
     - `id` - ID des Allergens
     - `Allergen` - Name des Allergens

@@ -1,5 +1,5 @@
 [Unternehmen]
 [Name] Nalli Silks
-[Land] Indien
+[Land] IN
 [Gründung] 1990
 [Website] nallisilks.com
