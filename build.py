@@ -32,12 +32,10 @@ for unternehmen_datei in [unternehmen for unternehmen in os.listdir(unternehmen_
             if line.startswith("[Name]"):
                 name = line[6:].strip()
                 if unternehmen_name.lower() != name.replace(" ", "_").lower():
-                    raise Exception(f"Unternehmensname {name} stimmt nicht mit Dateiname '{unternehmen_name}.txt' überein")
+                    raise Exception(f"Unternehmensname {name} stimmt nicht mit Dateiname '{unternehmen_name.lower()}.txt' überein")
                 unternehmen[unternehmen_name]["Name"] = name
             elif line.startswith("[Land]"):
                 _land = line[6:].strip()
-                if len(_land) != 2:
-                    raise Exception(f"Invalider Ländercode {_land}")
                 unternehmen[unternehmen_name]["Land"] = _land.upper()
             elif line.startswith("[Gründung]"):
                 unternehmen[unternehmen_name]["Gründung"] = line[10:].strip()
@@ -54,11 +52,12 @@ for bestandteil_datei in [bestandteil for bestandteil in os.listdir(bestandteile
         for line in f:
             line = line.strip()
             if line.startswith("[Name]"):
-                bestandteile[bestandteil_name]["Name"] = line[6:].strip()
+                name = line[6:].strip()
+                if bestandteil_name.lower() != name.replace(" ", "_").lower():
+                    raise Exception(f"Bestandteilsname {name} stimmt nicht mit Dateiname '{bestandteil_name.lower()}.txt' überein")
+                bestandteile[bestandteil_name]["Name"] = name
             elif line.startswith("[Herstellungsort]"):
                 _land = line[17:].strip()
-                if len(_land) != 2:
-                    raise Exception(f"Invalider Ländercode {_land}")
                 bestandteile[bestandteil_name]["Herstellungsort"] = _land.upper()
             elif line.startswith("[Unternehmen]"):
                 bestandteile[bestandteil_name]["Unternehmen"] = line[13:].strip()
@@ -88,9 +87,6 @@ for produkt_datei in [produkt for produkt in os.listdir(produkte_pfad) if produk
             elif line.startswith("[Kategorie]"):
                 produkte[produkt_name]["Kategorie"] = line[11:].strip()
             elif line.startswith("[Herstellungsort]"):
-                _land = line[17:].strip()
-                if len(_land) != 2:
-                    raise Exception(f"Invalider Ländercode {_land}")
                 produkte[produkt_name]["Herstellungsort"] = _land.upper()
 
             elif line.startswith("[Brennwert]"):

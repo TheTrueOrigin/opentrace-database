@@ -1,0 +1,24 @@
+[Name] Unbekannt
+[Barcode] -
+[Unternehmen] Unbekannt
+[Größe] -
+[Kategorie] -
+[Herstellungsort] -
+
+[Nährwerte]
+[Brennwert] -
+[Fettgehalt] -
+[Gesättigte Fettsäuren] -
+[Kohlenhydrate] -
+[Zuckergehalt] -
+[Eiweißgehalt] -
+[Salzgehalt] -
+
+[Bestandteile]
+[Bestandteil] Unbekannt
+
+[Allergene]
+[Allergen] -
+
+[Labels]
+[Label] -
