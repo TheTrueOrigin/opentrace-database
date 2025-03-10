@@ -35,7 +35,7 @@ for unternehmen_datei in [unternehmen for unternehmen in os.listdir(unternehmen_
                     raise Exception(f"Unternehmensname {name} stimmt nicht mit Dateiname '{unternehmen_name.lower()}.txt' überein")
                 unternehmen[unternehmen_name]["Name"] = name
             elif line.startswith("[Land]"):
-                unternehmen[unternehmen_name]["Land"] = line[6:].strip().upper()
+                unternehmen[unternehmen_name]["Land"] = line[6:].strip()
             elif line.startswith("[Gründung]"):
                 unternehmen[unternehmen_name]["Gründung"] = line[10:].strip()
             elif line.startswith("[Website]"):
@@ -56,7 +56,7 @@ for bestandteil_datei in [bestandteil for bestandteil in os.listdir(bestandteile
                     raise Exception(f"Bestandteilsname {name} stimmt nicht mit Dateiname '{bestandteil_name.lower()}.txt' überein")
                 bestandteile[bestandteil_name]["Name"] = name
             elif line.startswith("[Herstellungsort]"):
-                bestandteile[bestandteil_name]["Herstellungsort"] = line[17:].strip().upper()
+                bestandteile[bestandteil_name]["Herstellungsort"] = line[17:].strip()
             elif line.startswith("[Unternehmen]"):
                 bestandteile[bestandteil_name]["Unternehmen"] = line[13:].strip()
 # Produkte
@@ -84,7 +84,7 @@ for produkt_datei in [produkt for produkt in os.listdir(produkte_pfad) if produk
             elif line.startswith("[Kategorie]"):
                 produkte[produkt_name]["Kategorie"] = line[11:].strip()
             elif line.startswith("[Herstellungsort]"):
-                produkte[produkt_name]["Herstellungsort"] = line[17:].strip().upper()
+                produkte[produkt_name]["Herstellungsort"] = line[17:].strip()
 
             elif line.startswith("[Brennwert]"):
                 produkte[produkt_name]["Brennwert"] = line[11:].strip()
