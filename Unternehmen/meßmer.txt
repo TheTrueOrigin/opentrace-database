@@ -1,5 +1,0 @@
-[Unternehmen]
-[Name] Meßmer
-[Land] AT
-[Gründung] 1990
-[Website] meßmer.at

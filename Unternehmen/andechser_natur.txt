@@ -1,0 +1,5 @@
+[Unternehmen]
+[Name] Andechser Natur
+[Land] Deutschland
+[Gründung] 1908
+[Website] andechser-natur.de

@@ -1,5 +1,0 @@
-[Unternehmen]
-[Name] Tata Tea Limited
-[Land] IN
-[Gründung] 1893
-[Website] tata.com

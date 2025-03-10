@@ -59,7 +59,6 @@ for bestandteil_datei in [bestandteil for bestandteil in os.listdir(bestandteile
                 bestandteile[bestandteil_name]["Herstellungsort"] = line[17:].strip().upper()
             elif line.startswith("[Unternehmen]"):
                 bestandteile[bestandteil_name]["Unternehmen"] = line[13:].strip()
-
 # Produkte
 produkte = {}
 for produkt_datei in [produkt for produkt in os.listdir(produkte_pfad) if produkt.endswith(".txt") and not "beispiel" in os.path.splitext(produkt)[0]]:
@@ -227,6 +226,7 @@ for unternehmen_name, unternehmen_info in unternehmen.items():
         unternehmen_ids[unternehmen_info["Name"]] = cursor.lastrowid
 
 # Allergene
+# Labels
 allergenen_ids = {}
 labels_ids = {}
 
@@ -239,7 +239,6 @@ for produkt_name, produkt_info in produkte.items():
             allergenen_ids[allergen_name] = cursor.lastrowid
     
     for label_name in produkt_info["Labels"]:
-        label_name = "_".join(word.capitalize() for word in label_name.strip().split())
         if label_name not in labels_ids:
             cursor.execute("""
                 INSERT INTO Labels (Label) VALUES ('{}');
@@ -300,7 +299,10 @@ for produkt_name, produkt_info in produkte.items():
 # Produkte_Bestandteile
 for produkt_name, produkt_info in produkte.items():
     for bestandteil_name in produkt_info["Bestandteile"]:
-        bestandteil_id = bestandteile_ids[bestandteil_name]
+        try:
+            bestandteil_id = bestandteile_ids[bestandteil_name]
+        except:
+            raise Exception(f"Produktbestandteil {bestandteil_name} scheint in der Bestandteil-Datei anders benannt zu sein")
         produkt_id = produkte_ids[produkt_info["Name"]]
         cursor.execute("""
             INSERT INTO Produkte_Bestandteile (Produkt_ID, Bestandteil_ID) VALUES ({}, {});

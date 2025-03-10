@@ -1,0 +1,31 @@
+[Name] Bio Joghurt mild 3,8% Fett 150g
+[Barcode] 4104060010958
+[Unternehmen] Andechser Natur
+[Größe] 150g
+[Kategorie] Joghurt
+[Herstellungsort] Andechs Bayern Deutschland
+
+[Nährwerte]
+[Brennwert] 434kJ/104kcal
+[Fettgehalt] 5,7g
+[Gesättigte Fettsäuren] 3,9g
+[Kohlenhydrate] 5,6g
+[Zuckergehalt] 5,6g
+[Eiweißgehalt] 7,5g
+[Salzgehalt] 0,285g
+
+[Bestandteile]
+[Bestandteil] Bio-Milch Alpenvorland
+[Bestandteil] Europa dünnwandiger Kunststoffbecher
+[Bestandteil] Europa Papierbanderole
+[Bestandteil] Europa Aluverbundplatine
+
+[Allergene]
+[Allergen] Milch
+[Allergen] Laktose
+
+[Labels]
+[Label] EU-Bio-Siegel
+[Label] Bioland
+[Label] Bayerisches Bio-Siegel
+[Label] Klima-Bauer

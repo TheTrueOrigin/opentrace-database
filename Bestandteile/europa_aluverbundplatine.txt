@@ -1,0 +1,4 @@
+[Bestandteil]
+[Name] Andechser Natur Aluverbundplatine
+[Herstellungsort] Europa
+[Unternehmen] Unbekannt

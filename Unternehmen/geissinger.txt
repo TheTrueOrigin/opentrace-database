@@ -1,5 +1,0 @@
-[Unternehmen]
-[Name] Geissinger
-[Land] AT
-[Gründung] 1990
-[Website] geissinger.at
