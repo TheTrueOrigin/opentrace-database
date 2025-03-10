@@ -1,4 +1,4 @@
 [Bestandteil]
 [Name] Bio-Milch Alpenvorland
-[Herstellungsort] -
+[Herstellungsort] Bayern Deutschland
 [Unternehmen] Unbekannt
