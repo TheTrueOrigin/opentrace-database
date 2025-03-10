@@ -6,13 +6,13 @@
 [Herstellungsort] Andechs Bayern Deutschland
 
 [Nährwerte]
-[Brennwert] 1365kJ/325kcal
-[Fettgehalt] 19,0g
-[Gesättigte Fettsäuren] 13,0g
-[Kohlenhydrate] 18,5g
-[Zuckergehalt] 18,5g
-[Eiweißgehalt] 20,5g
-[Salzgehalt] 0,8g
+[Brennwert] 273kJ/65kcal
+[Fettgehalt] 3,8g
+[Gesättigte Fettsäuren] 2,6g
+[Kohlenhydrate] 3,7g
+[Zuckergehalt] 3,7g
+[Eiweißgehalt] 4,1g
+[Salzgehalt] 0,16g
 
 [Bestandteile]
 [Bestandteil] Bio-Milch Alpenvorland

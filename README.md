@@ -47,57 +47,62 @@ Um ein neues Produkt zu erstellen, folge dem folgenden Format.
 > [!TIP]
 > Nährwerte gelten pro 100g, bzw. 100ml.
 
-Beispiel: `meßmer_tee_klassik.txt`
+Beispiel: `bio_joghurt_mild_3,8%_fett_500g.txt`
 ```
-[Name] Meßmer Tee Klassik
-[Barcode] 4001257218503
-[Unternehmen] Meßmer
-[Größe] 20pcs
-[Kategorie] Tee
-[Herstellungsort] AT
+[Name] Bio Joghurt mild 3,8% Fett 500g
+[Barcode] 4104060024757
+[Unternehmen] Andechser Natur
+[Größe] 150g
+[Kategorie] Joghurt
+[Herstellungsort] Andechs Bayern Deutschland
 
 [Nährwerte]
-[Brennwert] 3kJ/1kcal
-[Fettgehalt] 0g
-[Gesättigte Fettsäuren] 0g
-[Kohlenhydrate] 0.2g
-[Zuckergehalt] 0.1g
-[Eiweißgehalt] 0g
-[Salzgehalt] 0,01g
+[Brennwert] 273kJ/65kcal
+[Fettgehalt] 3,8g
+[Gesättigte Fettsäuren] 2,6g
+[Kohlenhydrate] 3,7g
+[Zuckergehalt] 3,7g
+[Eiweißgehalt] 4,1g
+[Salzgehalt] 0,16g
 
 [Bestandteile]
-[Bestandteil] Tata Tea Limited Schwarztee Blätter
-[Bestandteil] Nalli Silks Seide
-[Bestandteil] Geissinger Karton Verpackung
+[Bestandteil] Bio-Milch Alpenvorland
+[Bestandteil] Europa dünnwandiger Kunststoffbecher
+[Bestandteil] Europa Papierbanderole
+[Bestandteil] Europa Aluverbundplatine
 
 [Allergene]
-[Allergen] Histamin
+[Allergen] Milch
+[Allergen] Laktose
 
 [Labels]
-[Label] Glutenfrei
+[Label] EU-Bio-Siegel
+[Label] Bioland
+[Label] Bayerisches Bio-Siegel
+[Label] Klima-Bauer
 ```
 2. Füge eine Produkt-Bilddatei zum `Medien` Ordner hinzu. Beispiel: `meßmer_tee_klassik.png`
 
 > [!WARNING]
 > Die Datei muss denselben Namen haben wie die Produkt-Datei. Ersetze Leerzeichen mit einem Unterstrich.
 
-3. Erstelle eine Datei für das Unternehmen. Beispiel: `meßmer.txt`
+3. Erstelle eine Datei für das Unternehmen. Beispiel: `andechser_natur.txt`
 ```
 [Unternehmen]
-[Name] Meßmer
-[Land] AT
-[Gründung] 1990
-[Website] https://www.meßmer.at
+[Name] Andechser Natur
+[Land] Deutschland
+[Gründung] 1908
+[Website] andechser-natur.de
 ```
 > [!WARNING]
 > Die Datei muss denselben Namen haben wie das Unternehmen in der Produkt-Datei. Ersetze Leerzeichen mit einem Unterstrich.
 
-4. Erstelle eine Datei für jedes Bestandteil. Beispiel: `tata_tea_limited_schwarztee_blätter.txt`
+4. Erstelle eine Datei für jedes Bestandteil. Beispiel: `europa_papierbanderole.txt`
 ```
 [Bestandteil]
-[Name] Tata Tea Limited Schwarztee Blätter
-[Herstellungsort] IN
-[Unternehmen] Tata Tea Limited
+[Name] Europa Papierbanderole
+[Herstellungsort] Europa
+[Unternehmen] Unbekannt
 ```
 > [!WARNING]
 > Die Datei muss denselben Namen haben wie das Bestandteil in der Produkt-Datei. Ersetze Leerzeichen mit einem Unterstrich.
