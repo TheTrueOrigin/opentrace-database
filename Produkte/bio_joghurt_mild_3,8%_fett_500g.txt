@@ -1,5 +1,5 @@
-[Name] Bio Joghurt mild 3,8% Fett 150g
-[Barcode] 4104060010958
+[Name] Bio Joghurt mild 3,8% Fett 500g
+[Barcode] 4104060024757
 [Unternehmen] Andechser Natur
 [Größe] 150g
 [Kategorie] Joghurt

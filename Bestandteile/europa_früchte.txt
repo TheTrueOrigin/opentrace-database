@@ -1,4 +1,4 @@
 [Bestandteil]
-[Name] Europa Papierbanderole
+[Name] Europa Früchte
 [Herstellungsort] Europa
 [Unternehmen] Unbekannt

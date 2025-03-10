@@ -1,4 +1,4 @@
 [Bestandteil]
-[Name] Andechser Natur Dünnwandiger Kunststoffbecher
+[Name] Europa dünnwandiger Kunststoffbecher
 [Herstellungsort] Europa
 [Unternehmen] Unbekannt

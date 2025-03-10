@@ -1,0 +1,28 @@
+[Name] Bio-Jogurt mild Erdbeere 3,8% Fett 500g
+[Barcode] 4104060000041
+[Unternehmen] Andechser Natur
+[Größe] 500g
+[Kategorie] Fruchtjoghurt
+[Herstellungsort] Andechs Bayern Deutschland
+
+[Nährwerte]
+[Brennwert] 2005kJ/475kcal
+[Fettgehalt] 14,5g
+[Gesättigte Fettsäuren] 9,5g
+[Kohlenhydrate] 67,0g
+[Zuckergehalt] 67,0g
+[Eiweißgehalt] 18,5g
+[Salzgehalt] 0,65g
+
+[Bestandteile]
+[Bestandteil] Bio-Milch Alpenvorland
+[Bestandteil] Europa Früchte
+[Bestandteil] Andechser Natur 500g Joghurt-Mehrwegglas mit Etikett
+
+[Allergene]
+[Allergen] Milch
+[Allergen] Laktose
+
+[Labels]
+[Label] EU-Bio-Siegel
+[Label] Bioland
