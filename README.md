@@ -66,6 +66,8 @@ Beispiel: `bio_joghurt_mild_3,8%_fett_500g.txt`
 [Gesamtgewicht] 523g
 [Kategorie] Joghurt
 [Herstellungsort] Andechs Bayern Deutschland
+
+[Export]
 [Exportdistanz] 530km
 [Exporttyp] LKW
 
@@ -80,21 +82,32 @@ Beispiel: `bio_joghurt_mild_3,8%_fett_500g.txt`
 
 [Bestandteile]
 [Bestandteil] Bio-Milch Alpenvorland
+[Gewicht] 500g
+
+[Transport]
 [Transportdistanz] 38km
 [Transporttyp] LKW
-[Gewicht] 500g
+
 [Bestandteil] Europa dünnwandiger Kunststoffbecher
-[Transportdistanz] 630km
-[Transporttyp] LKW
 [Gewicht] 15g
+
+[Transport]
+[Transportdistanz] 630km
+[Transporttyp] LKW
+
 [Bestandteil] Europa Papierbanderole
-[Transportdistanz] 630km
-[Transporttyp] LKW
 [Gewicht] 6g
-[Bestandteil] Europa Aluverbundplatine
+
+[Transport]
 [Transportdistanz] 630km
 [Transporttyp] LKW
+
+[Bestandteil] Europa Aluverbundplatine
 [Gewicht] 2g
+
+[Transport]
+[Transportdistanz] 630km
+[Transporttyp] LKW
 
 [Allergene]
 [Allergen] Milch
@@ -176,3 +189,19 @@ Die Datenbank wird in der Datei `database.db` gespeichert. Sie besteht aus 5 Hau
 - `Labels`
     - `id` - ID des Labels
     - `Label` - Name des Labels
+
+## Wie werden CO2-Emissionen ausgerechnet
+Die CO2-Emission wird mit dieser Formel bestimmt:
+```
+Distanz * Gewicht * Emissionfaktor
+```
+
+Emissionsfaktoren:
+```
+Kurzsreckenflug: 0.0011
+Langstreckenflug: 0.0005
+Lastkraftwagen: 0.0001
+Zug: 0.00004
+Schiff: 0.00003
+Elektrisch: 0
+```

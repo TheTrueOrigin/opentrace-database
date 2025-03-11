@@ -4,6 +4,5 @@
     "LKW": 0.0001,
     "ZUG": 0.00004,
     "SCHIFF": 0.00003,
-    "E": 0,
-    "API": "https://live-chat.duckdns.org"
+    "E": 0
 }
