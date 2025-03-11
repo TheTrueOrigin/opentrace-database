@@ -81,7 +81,7 @@ Beispiel: `bio_joghurt_mild_3,8%_fett_500g.txt`
 [Label] Bayerisches Bio-Siegel
 [Label] Klima-Bauer
 ```
-2. Füge eine Produkt-Bilddatei zum `Medien` Ordner hinzu. Beispiel: `meßmer_tee_klassik.png`
+2. Füge eine Produkt-Bilddatei zum `Medien` Ordner hinzu. Beispiel: `bio_joghurt_mild_3,8%_fett_500g.png`
 
 > [!WARNING]
 > Die Datei muss denselben Namen haben wie die Produkt-Datei. Ersetze Leerzeichen mit einem Unterstrich.
