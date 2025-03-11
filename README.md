@@ -4,7 +4,7 @@ Die OpenTrace-Datenbank ist ein Open-Source-Projekt, das es ermöglicht, Informa
 Diese Datenbank wird durch Beiträge von der Open-Source-Community kontinuierlich erweitert. Jeder kann Produkte und deren Details hinzufügen, aktualisieren oder korrigieren, um sicherzustellen, dass die App stets mit den neuesten und genauesten Informationen versorgt wird. Um eine hohe Qualität der Daten zu gewährleisten, erfolgt die Verwaltung der Beiträge über ein GitHub-Repository, in dem alle Änderungen nachvollziehbar sind.
 
 ## Eigenen Beitrag
-1. [Produkt hier hinzufügen](https://github.com/TheTrueOrigin/opentrace-database/new/main?filename=Produkte/neu.txt&value=[Name]%20Name%0A[Barcode]%20Barcode%0A[Unternehmen]%20Unternehmen%0A[Größe]%20Größe%0A[Kategorie]%20Kategorie%0A[Herstellungsort]%20Ort%0A%0A[Nährwerte]%0A[Brennwert]%20Brennwert%0A[Fettgehalt]%20Fettgehalt%0A[Gesättigte%20Fettsäuren]%20Gesättigte%20Fettsäuren%0A[Kohlenhydrate]%20Kohlenhydrate%0A[Zuckergehalt]%20Zuckergehalt%0A[Eiweißgehalt]%20Eiweißgehalt%0A[Salzgehalt]%20Salzgehalt%0A%0A[Bestandteile]%0A[Bestandteil]%20Bestandteil%201%0A[Bestandteil]%20Bestandteil%202%20%0A(weitere%20Bestandteile)%0A%0A[Allergene]%0A[Allergen]%20Allergen%201%0A[Allergen]%20Allergen%202%0A(weitere%20Allergene)%0A%0A[Labels]%0A[Label]%20Label%201%0A[Label]%20Label%202%0A(weitere%20Labels))
+1. [Produkt hier hinzufügen](https://github.com/TheTrueOrigin/opentrace-database/new/main?filename=Produkte/neu.txt&value=%5BName%5D%20-%0A%5BBarcode%5D%20-%20%28EAN%2013%29%0A%5BUnternehmen%5D%20-%0A%5BGr%C3%B6%C3%9Fe%5D%20-%20%0A%5BGesamtgewicht%5D%20-%20kg%20oder%20g%0A%5BKategorie%5D%20-%0A%5BHerstellungsort%5D%20-%0A%0A%5BExport%5D%0A%5BExportdistanz%5D%20-%20km%0A%5BExporttyp%5D%20-%0A%0A%5BExportdistanz%5D%20-%20km%20%28mehrere%20Exportabschnitte%20m%C3%B6glich%29%0A%5BExporttyp%5D%20-%0A%0A%5BN%C3%A4hrwerte%5D%0A%5BBrennwert%5D%20-%20in%20kj%20und%20in%20kcal%20%28_kJ%2F_kcal%29%0A%5BFettgehalt%5D%20-%20g%0A%5BGes%C3%A4ttigte%20Fetts%C3%A4uren%5D%20-%20g%0A%5BKohlenhydrate%5D%20-%20g%0A%5BZuckergehalt%5D%20-%20g%0A%5BEiwei%C3%9Fgehalt%5D%20-%20g%0A%5BSalzgehalt%5D%20-%20g%0A%0A%5BBestandteil%5D%20-%0A%5BGewicht%5D%20-%20kg%20oder%20g%0A%0A%5BTransport%5D%0A%5BTransportdistanz%5D%20-%20km%0A%5BTransporttyp%5D%20-%0A%0A%5BBestandteil%5D%20-%0A%5BGewicht%5D%20-%20kg%20oder%20g%0A%0A%5BTransport%5D%0A%5BTransportdistanz%5D%20-%20km%0A%5BTransporttyp%5D%20-%0A%0A%5BTransportdistanz%5D%20-%20mehrere%20Transporteabschnitte%2FBestandteile%20m%C3%B6glich%0A%5BTransporttyp%5D%20-%0A%0A%5BAllergene%5D%0A%5BAllergen%5D%20-%0A%5BAllergen%5D%20merhere...%0A%0A%5BLabels%5D%0A%5BLabel%5D%20-%0A%5BLabel%5D%20mehrere...)
 2. [Unternehmen hier hinzufügen](https://github.com/TheTrueOrigin/opentrace-database/new/main?filename=Unternehmen/neu.txt&value=[Unternehmen]%0A[Name]%20Name%0A[Land]%20Land%0A[Gründung]%20Gründung%0A[Website]%20Website)
 3. [Bestandteil hier hinzufügen](https://github.com/TheTrueOrigin/opentrace-database/new/main?filename=Bestandteile/neu.txt&value=[Bestandteil]%0A[Name]%20Name%0A[Herstellungsort]%20Ort%0A[Unternehmen]%20Unternehmen)
 
@@ -27,8 +27,12 @@ Um ein neues Produkt zu erstellen, folge dem folgenden Format.
 - `Barcode` - Barcode des Produkts
 - `Unternehmen` - Hersteller des Produkts
 - `Größe` - Größe des Produkts
+- `Gesamtgewicht` - Gewicht des Produkts (kg oder g)
 - `Kategorie` - Kategorie des Produkts
-- `Herstellungsort` - Herstellungsort des Produkts (2-stelliger Ländercode)
+- `Herstellungsort` - Herstellungsort des Produkts
+- `Export` Mehrere Transportabschnitte
+    - `Exportdistanz` - Distanz des Transports
+    - `Exporttyp` - Typ des Transports
 - `Nährwerte` Nährwerte in 100g/ml aufgeteilt in:
     - `Brennwert` - Brennwert des Produkts
     - `Fettgehalt` - Fettgehalt des Produkts
@@ -39,22 +43,31 @@ Um ein neues Produkt zu erstellen, folge dem folgenden Format.
     - `Salzgehalt` - Salzgehalt des Produkts
 - `Bestandteile` Mehrere Bestandteile aufgeteilt in:
     - `Bestandteil` - Name des Bestandteils
+    - `Gewicht` - Gewicht des Bestandteils
+    - `Transport` - Mehrere Transportabschnitte des Produkts
+        - `Transportdistanz` - Distanz des Transportabschnitte
+        - `Transporttyp` - Transporttyp
 - `Allergene` Mehrere Allergene aufgeteilt in:
     - `Allergen` - Name des Allergens
 - `Labels` Mehrere Labels aufgeteilt in:
     - `Label` - Name des Labels
 
 > [!TIP]
-> Nährwerte gelten pro 100g, bzw. 100ml.
+> Nährwerte gelten pro 100g, bzw. 100ml.<br>
+> Export-/Transporttypen sind KSF (Kurzstreckenflug/unter 1000km), LSF (Langstreckenflug), LKW, ZUG, SCHIFF, E (Elektro)<br>
+> Nutze für Distanzen auf Land [Google Maps](maps.google.com), auf See [Airrates](airrates.com) und in der Luft [Distance](distance.to)
 
 Beispiel: `bio_joghurt_mild_3,8%_fett_500g.txt`
 ```
 [Name] Bio Joghurt mild 3,8% Fett 500g
 [Barcode] 4104060024757
 [Unternehmen] Andechser Natur
-[Größe] 150g
+[Größe] 500g
+[Gesamtgewicht] 523g
 [Kategorie] Joghurt
 [Herstellungsort] Andechs Bayern Deutschland
+[Exportdistanz] 530km
+[Exporttyp] LKW
 
 [Nährwerte]
 [Brennwert] 273kJ/65kcal
@@ -67,9 +80,21 @@ Beispiel: `bio_joghurt_mild_3,8%_fett_500g.txt`
 
 [Bestandteile]
 [Bestandteil] Bio-Milch Alpenvorland
+[Transportdistanz] 38km
+[Transporttyp] LKW
+[Gewicht] 500g
 [Bestandteil] Europa dünnwandiger Kunststoffbecher
+[Transportdistanz] 630km
+[Transporttyp] LKW
+[Gewicht] 15g
 [Bestandteil] Europa Papierbanderole
+[Transportdistanz] 630km
+[Transporttyp] LKW
+[Gewicht] 6g
 [Bestandteil] Europa Aluverbundplatine
+[Transportdistanz] 630km
+[Transporttyp] LKW
+[Gewicht] 2g
 
 [Allergene]
 [Allergen] Milch
@@ -122,6 +147,7 @@ Die Datenbank wird in der Datei `database.db` gespeichert. Sie besteht aus 5 Hau
     - `Name` - Produktname
     - `Barcode` - Barcode des Produkts
     - `Größe` - Größe des Produkts
+    - `Gesamtgewicht` - Gewicht des Produkts
     - `Kategorie` - Kategorie des Produkts
     - `Herstellungsort` - Herstellungsort des Produkts (2-stelliger Ländercode)
     - `Brennwert` - Brennwert des Produkts
@@ -131,6 +157,8 @@ Die Datenbank wird in der Datei `database.db` gespeichert. Sie besteht aus 5 Hau
     - `Zuckergehalt` - Zuckergehalt des Produkts
     - `Eiweißgehalt` - Eiweißgehalt des Produkts
     - `Salzgehalt` - Salzgehalt des Produkts
+    - `Emission` - Gesamtemissioon des Produkts
+    - `Distanz` - Gesamtdistanz des Produkttransports und der Produktbestandteile
 - `Unternehmen`
     - `id` - ID des Unternehmens
     - `Name` - Name des Unternehmens

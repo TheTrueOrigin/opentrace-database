@@ -2,8 +2,13 @@
 [Barcode] 4104060000041
 [Unternehmen] Andechser Natur
 [Größe] 500g
+[Gesamtgewicht] 700g
 [Kategorie] Fruchtjoghurt
 [Herstellungsort] Andechs Bayern Deutschland
+
+[Export]
+[Exportdistanz] 530km
+[Exporttyp] LKW
 
 [Nährwerte]
 [Brennwert] 401kJ/95kcal
@@ -16,8 +21,25 @@
 
 [Bestandteile]
 [Bestandteil] Bio-Milch Alpenvorland
+[Gewicht] 420g
+
+[Transport]
+[Transportdistanz] 38km
+[Transporttyp] LKW
+
 [Bestandteil] Europa Früchte
+[Gewicht] 80g
+
+[Transport]
+[Transportdistanz] 630km
+[Transporttyp] LKW
+
 [Bestandteil] Andechser Natur 500g Joghurt-Mehrwegglas mit Etikett
+[Gewicht] 200g
+
+[Transport]
+[Transportdistanz] 457km
+[Transporttyp] LKW
 
 [Allergene]
 [Allergen] Milch

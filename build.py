@@ -3,6 +3,7 @@
 ### Imports ###
 import sqlite3
 import os
+import json
 
 ### Prod-Pfad ###
 produkte_pfad = os.path.join(os.path.dirname(__file__), "Produkte")
@@ -18,6 +19,24 @@ medien_pfad = os.path.join(os.path.dirname(__file__), "Medien")
 
 ### Datenbank-Pfad ###
 db_pfad = os.path.join(os.path.dirname(__file__), "database.db")
+
+# Faktoren
+with open(os.path.join(os.path.dirname(__file__), "faktoren.json"), "r") as f:
+    faktoren = json.load(f)
+
+# Emission ausrechnen mit Distanz, Typ und Faktor
+def emission_berechnen(distanz, typ, masse):
+    # Flüge Great Circle Distance + 95km
+    # Straßen 1,05*Distanz
+    # Wasser 1,15*Distanz
+    # Schienen nichts
+    if typ in ["KSF", "LSF"]:
+        return (distanz+95)*faktoren[typ]*masse
+    if typ in ["LKW"]:
+        return 1.05*distanz*faktoren[typ]*masse
+    if typ in ["SCHIFF"]:
+        return 1.15*distanz*faktoren[typ]*masse
+    return distanz*faktoren[typ]*masse
 
 ### Zusammenfügen der Informationen ###
 # Unternehmen
@@ -81,11 +100,40 @@ for produkt_datei in [produkt for produkt in os.listdir(produkte_pfad) if produk
                 produkte[produkt_name]["Unternehmen"] = line[13:].strip()
             elif line.startswith("[Größe]"):
                 produkte[produkt_name]["Größe"] = line[7:].strip()
+            elif line.startswith("[Gesamtgewicht]"):
+                gewicht = line[15:].strip()
+                if "kg" in gewicht:
+                    gewicht = int(gewicht.replace("kg", "").strip())
+                elif "g" in gewicht:
+                    gewicht = int(gewicht.replace("g", "").strip())/1000
+                produkte[produkt_name]["Gesamtgewicht"] = gewicht
             elif line.startswith("[Kategorie]"):
                 produkte[produkt_name]["Kategorie"] = line[11:].strip()
             elif line.startswith("[Herstellungsort]"):
                 produkte[produkt_name]["Herstellungsort"] = line[17:].strip()
-
+            elif line.startswith("[Exportdistanz]"):
+                distanz = line[15:].strip()
+                if not "Exportdistanz" in produkte[produkt_name]:
+                    produkte[produkt_name]["Exportdistanz"] = []
+                if "km" in distanz:
+                    distanz = int(distanz.replace("km", "").strip())
+                else:
+                    raise Exception(f"Bitte die Exportdistanz {distanz} in km eingeben bei {produkt_name}.txt")
+                produkte[produkt_name]["Exportdistanz"].append(distanz)
+            elif line.startswith("[Exporttyp]"):
+                typ = line[11:].strip()
+                if not "Exporttyp" in produkte[produkt_name]:
+                    produkte[produkt_name]["Exporttyp"] = []
+                    produkte[produkt_name]["Exportfaktor"] = []
+                    produkte[produkt_name]["Exportemission"] = []
+                if typ not in faktoren:
+                    typen = list(faktoren.keys())
+                    raise Exception(f"Bitte einen der Typen {typen} in {produkt_name}.txt wählen")
+                produkte[produkt_name]["Exporttyp"].append(typ)
+                produkte[produkt_name]["Exportfaktor"].append(faktoren[typ])
+                emission = emission_berechnen(produkte[produkt_name]["Exportdistanz"][-1], produkte[produkt_name]["Exporttyp"][-1], produkte[produkt_name]["Gesamtgewicht"])
+                produkte[produkt_name]["Exportemission"].append(emission)
+            
             elif line.startswith("[Brennwert]"):
                 produkte[produkt_name]["Brennwert"] = line[11:].strip()
             elif line.startswith("[Fettgehalt]"):
@@ -104,7 +152,31 @@ for produkt_datei in [produkt for produkt in os.listdir(produkte_pfad) if produk
             elif line.startswith("[Bestandteile]"):
                 produkte[produkt_name]["Bestandteile"] = []
             elif line.startswith("[Bestandteil]"):
-                produkte[produkt_name]["Bestandteile"].append(line[13:].strip())
+                produkte[produkt_name]["Bestandteile"].append({"Name": line[13:].strip(), "Transportdistanz": [], "Transporttyp": [], "Transportfaktor": [], "Transportemission": []})
+            elif line.startswith("[Transportdistanz]"):
+                if "km" in line[18:]:
+                    distanz = int(line[18:].replace("km", "").strip())
+                else:
+                    raise Exception(f"Bitte die Transportdistanz {line[18:].strip()} in km eingeben bei {produkt_name}.txt")
+                produkte[produkt_name]["Bestandteile"][-1]["Transportdistanz"].append(distanz)
+            elif line.startswith("[Transporttyp]"):
+                typ = line[14:].strip()
+                if typ not in faktoren:
+                    typen = list(faktoren.keys())
+                    raise Exception(f"Bitte einen der Typen {typen} in {produkt_name}.txt wählen")
+                produkte[produkt_name]["Bestandteile"][-1]["Transporttyp"].append(typ)
+                produkte[produkt_name]["Bestandteile"][-1]["Transportfaktor"].append(faktoren[typ])
+                emission = emission_berechnen(produkte[produkt_name]["Bestandteile"][-1]["Transportdistanz"][-1], produkte[produkt_name]["Bestandteile"][-1]["Transporttyp"][-1], produkte[produkt_name]["Bestandteile"][-1]["Transportfaktor"][-1])
+                produkte[produkt_name]["Bestandteile"][-1]["Transportemission"].append(emission)
+            elif line.startswith("[Gewicht]"):
+                gewicht = line[9:].strip()
+                if "kg" in gewicht:
+                    gewicht = int(gewicht.replace("kg", "").strip())
+                elif "g" in gewicht:
+                    gewicht = int(gewicht.replace("g", "").strip())/1000
+                else:
+                    raise Exception(f"Bitte das Gewicht {gewicht} in g oder kg eingeben bei {produkt_name}.txt")
+                produkte[produkt_name]["Bestandteile"][-1]["Gewicht"] = gewicht
 
             elif line.startswith("[Allergene]"):
                 produkte[produkt_name]["Allergene"] = []
@@ -115,6 +187,22 @@ for produkt_datei in [produkt for produkt in os.listdir(produkte_pfad) if produk
                 produkte[produkt_name]["Labels"] = []
             elif line.startswith("[Label]"):
                 produkte[produkt_name]["Labels"].append(line[7:].strip())
+
+    gesamt_emission = 0
+    gesamt_distanz = 0
+    if len(produkte[produkt_name]["Exportdistanz"]) != len(produkte[produkt_name]["Exporttyp"]):
+        raise (f"Bitte gleich viele Exportdistanzen wie Exporttypen in {produkt_name}.txt")
+    else:
+        gesamt_emission += sum(produkte[produkt_name]["Exportemission"])
+        gesamt_distanz += sum(produkte[produkt_name]["Exportdistanz"])
+    for bestandteil in produkte[produkt_name]["Bestandteile"]:
+        if len(bestandteil["Transportdistanz"]) != len(bestandteil["Transporttyp"]):
+            raise (f"Bitte gleich viele Transportdistanzen wie Transporttypen im Bestandteil {bestandteil["Name"]} in {produkt_name}.txt")
+        else:
+            gesamt_emission += sum(bestandteil["Transportemission"])
+            gesamt_distanz += sum(bestandteil["Transportdistanz"])
+    produkte[produkt_name]["Emission"] = gesamt_emission
+    produkte[produkt_name]["Distanz"] = gesamt_distanz
 
 ### Datenbank erstellen ###
 # Datenbank löschen, falls sie existiert
@@ -142,6 +230,7 @@ cursor.execute("""
         Name TEXT,
         Barcode TEXT,
         Größe TEXT, 
+        Gesamtgewicht INTEGER,
         Kategorie TEXT, 
         Herstellungsort TEXT, 
         Brennwert TEXT, 
@@ -151,6 +240,8 @@ cursor.execute("""
         Zuckergehalt TEXT, 
         Eiweißgehalt TEXT, 
         Salzgehalt TEXT,
+        Emission FLOAT,
+        Distanz INTEGER,
         FOREIGN KEY (Unternehmen_ID) REFERENCES Unternehmen(id) ON DELETE CASCADE
     );
     """)
@@ -182,6 +273,19 @@ cursor.execute("""
     );
     """)
 
+# Produkte_Export
+cursor.execute("""
+    CREATE TABLE IF NOT EXISTS Produkte_Export (
+        Exportdistanzen_ID INTEGER PRIMARY KEY AUTOINCREMENT,
+        Produkt_ID INTEGER,
+        Distanz INTEGER,
+        Typ TEXT,
+        Faktor FLOAT,
+        Emission FLOAT, 
+        FOREIGN KEY (Produkt_ID) REFERENCES Produkt(id) ON DELETE CASCADE
+    );
+    """)
+
 # Produkte_Labels
 cursor.execute("""
     CREATE TABLE IF NOT EXISTS Produkte_Labels (
@@ -209,9 +313,24 @@ cursor.execute("""
     CREATE TABLE IF NOT EXISTS Produkte_Bestandteile (
         Produkt_ID INTEGER, 
         Bestandteil_ID INTEGER,
+        Gewicht INTEGER,
         PRIMARY KEY (Produkt_ID, Bestandteil_ID),
         FOREIGN KEY (Produkt_ID) REFERENCES Produkte(id) ON DELETE CASCADE,
         FOREIGN KEY (Bestandteil_ID) REFERENCES Bestandteile(id) ON DELETE CASCADE
+    );
+    """)
+
+# Produkt_Bestandteile_Transport
+cursor.execute("""
+    CREATE TABLE IF NOT EXISTS Produkte_Bestandteile_Transport (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        Produkt_ID INTEGER,
+        Bestandteil_ID INTEGER,
+        Distanz INTEGER,
+        Typ TEXT,
+        Faktor FLOAT,
+        Emission FLOAT,
+        FOREIGN KEY (Produkt_ID, Bestandteil_ID) REFERENCES Produkte_Bestandteile(Produkt_ID, Bestandteil_ID) ON DELETE CASCADE
     );
     """)
 
@@ -234,15 +353,15 @@ for produkt_name, produkt_info in produkte.items():
     for allergen_name in produkt_info["Allergene"]:
         if allergen_name not in allergenen_ids:
             cursor.execute("""
-                INSERT INTO Allergene (Allergen) VALUES ('{}');
-            """.format(allergen_name))
+                INSERT INTO Allergene (Allergen) VALUES (?);
+            """, (allergen_name,))
             allergenen_ids[allergen_name] = cursor.lastrowid
     
     for label_name in produkt_info["Labels"]:
         if label_name not in labels_ids:
             cursor.execute("""
-                INSERT INTO Labels (Label) VALUES ('{}');
-            """.format(label_name))
+                INSERT INTO Labels (Label) VALUES (?);
+            """, (label_name,))
             labels_ids[label_name] = cursor.lastrowid
 
 # Bestandteile
@@ -252,8 +371,8 @@ for bestandteil_name, bestandteil_info in bestandteile.items():
         unternehmen_name = bestandteil_info["Unternehmen"]
         unternehmen_id = unternehmen_ids[unternehmen_name]
         cursor.execute("""
-            INSERT INTO Bestandteile (Unternehmen_ID, Name, Herstellungsort) VALUES ({}, '{}', '{}');
-        """.format(unternehmen_id, bestandteil_info["Name"], bestandteil_info["Herstellungsort"]))
+            INSERT INTO Bestandteile (Unternehmen_ID, Name, Herstellungsort) VALUES (?, ?, ?);
+        """, (unternehmen_id, bestandteil_info["Name"], bestandteil_info["Herstellungsort"]))
         bestandteile_ids[bestandteil_info["Name"]] = cursor.lastrowid
 
 # Produkte
@@ -264,19 +383,28 @@ for produkt_name, produkt_info in produkte.items():
         unternehmen_id = unternehmen_ids[unternehmen_name]
         cursor.execute("""
             INSERT INTO Produkte (
-                Unternehmen_ID, Name, Barcode, Größe, Kategorie, 
+                Unternehmen_ID, Name, Barcode, Größe, Gesamtgewicht, Kategorie, 
                 Herstellungsort, Brennwert, Fettgehalt, Gesättigte_Fettsäuren, 
-                Kohlenhydrate, Zuckergehalt, Eiweißgehalt, Salzgehalt
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+                Kohlenhydrate, Zuckergehalt, Eiweißgehalt, Salzgehalt, Emission, Distanz
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
         """, (
             unternehmen_id, produkt_info["Name"], produkt_info["Barcode"],
-            produkt_info["Größe"], produkt_info["Kategorie"],
+            produkt_info["Größe"], produkt_info["Gesamtgewicht"], produkt_info["Kategorie"],
             produkt_info["Herstellungsort"], produkt_info["Brennwert"],
             produkt_info["Fettgehalt"], produkt_info["Gesättigte Fettsäuren"],
             produkt_info["Kohlenhydrate"], produkt_info["Zuckergehalt"],
-            produkt_info["Eiweißgehalt"], produkt_info["Salzgehalt"]
+            produkt_info["Eiweißgehalt"], produkt_info["Salzgehalt"],
+            produkt_info["Emission"], produkt_info["Distanz"]
         ))
         produkte_ids[produkt_info["Name"]] = cursor.lastrowid
+
+#Produkte_Export
+for produkt_name, produkt_info in produkte.items():
+    produkt_id = produkte_ids[produkt_info["Name"]]
+    for distanz, typ, faktor, emission in zip(produkt_info["Exportdistanz"], produkt_info["Exporttyp"], produkt_info["Exportfaktor"], produkt_info["Exportemission"]):
+        cursor.execute("""
+            INSERT INTO Produkte_Export (Produkt_ID, Distanz, Typ, Faktor, Emission) VALUES (?, ?, ?, ?, ?);
+        """, (produkt_id, distanz, typ, faktor, emission))
 
 # Produkte_Allergene
 for produkt_name, produkt_info in produkte.items():
@@ -284,8 +412,8 @@ for produkt_name, produkt_info in produkte.items():
         allergen_id = allergenen_ids[allergen_name]
         produkt_id = produkte_ids[produkt_info["Name"]]
         cursor.execute("""
-            INSERT INTO Produkte_Allergene (Produkt_ID, Allergen_ID) VALUES ({}, {});
-        """.format(produkt_id, allergen_id))
+            INSERT INTO Produkte_Allergene (Produkt_ID, Allergen_ID) VALUES (?, ?);
+        """, (produkt_id, allergen_id))
 
 # Produkte_Labels
 for produkt_name, produkt_info in produkte.items():
@@ -293,20 +421,35 @@ for produkt_name, produkt_info in produkte.items():
         label_id = labels_ids[label_name]
         produkt_id = produkte_ids[produkt_info["Name"]]
         cursor.execute("""
-            INSERT INTO Produkte_Labels (Produkt_ID, Label_ID) VALUES ({}, {});
-            """.format(produkt_id, label_id))
+            INSERT INTO Produkte_Labels (Produkt_ID, Label_ID) VALUES (?, ?);
+            """, (produkt_id, label_id))
         
 # Produkte_Bestandteile
 for produkt_name, produkt_info in produkte.items():
-    for bestandteil_name in produkt_info["Bestandteile"]:
+    for bestandteil in produkt_info["Bestandteile"]:
+        bestandteil_name = bestandteil["Name"]
         try:
             bestandteil_id = bestandteile_ids[bestandteil_name]
         except:
             raise Exception(f"Produktbestandteil {bestandteil_name} scheint in der Bestandteil-Datei anders benannt zu sein")
         produkt_id = produkte_ids[produkt_info["Name"]]
         cursor.execute("""
-            INSERT INTO Produkte_Bestandteile (Produkt_ID, Bestandteil_ID) VALUES ({}, {});
-        """.format(produkt_id, bestandteil_id))
+            INSERT INTO Produkte_Bestandteile (Produkt_ID, Bestandteil_ID) VALUES (?, ?);
+        """, (produkt_id, bestandteil_id))
+
+# Produkte_Bestandteile_Transport
+for produkt_name, produkt_info in produkte.items():
+    for bestandteil in produkt_info["Bestandteile"]:
+        bestandteil_name = bestandteil["Name"]
+        try:
+            bestandteil_id = bestandteile_ids[bestandteil_name]
+        except:
+            raise Exception(f"Produktbestandteil {bestandteil_name} scheint in der Bestandteil-Datei anders benannt zu sein")
+        produkt_id = produkte_ids[produkt_info["Name"]]
+        for distanz, typ, faktor, emission in zip(bestandteil["Transportdistanz"], bestandteil["Transporttyp"], bestandteil["Transportfaktor"], bestandteil["Transportemission"]):
+            cursor.execute("""
+                INSERT INTO Produkte_Bestandteile_Transport (Produkt_ID, Bestandteil_ID, Distanz, Typ, Faktor, Emission) VALUES (?, ?, ?, ?, ?, ?);
+            """, (produkt_id, bestandteil_id, distanz, typ, faktor, emission))
 
 # Commit the database
 conn.commit()
