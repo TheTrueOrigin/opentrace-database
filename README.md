@@ -162,7 +162,7 @@ Die Datenbank wird in der Datei `database.db` gespeichert. Sie besteht aus 5 Hau
     - `Größe` - Größe des Produkts
     - `Gesamtgewicht` - Gewicht des Produkts
     - `Kategorie` - Kategorie des Produkts
-    - `Herstellungsort` - Herstellungsort des Produkts (2-stelliger Ländercode)
+    - `Herstellungsort` - Herstellungsort des Produkts
     - `Brennwert` - Brennwert des Produkts
     - `Fettgehalt` - Fettgehalt des Produkts
     - `Gesättigte Fettsäuren` - Gesättigte Fettsäuren des Produkts
@@ -175,14 +175,14 @@ Die Datenbank wird in der Datei `database.db` gespeichert. Sie besteht aus 5 Hau
 - `Unternehmen`
     - `id` - ID des Unternehmens
     - `Name` - Name des Unternehmens
-    - `Land` - Herstellungsort des Unternehmens (2-stelliger Ländercode)
+    - `Land` - Herstellungsort des Unternehmens
     - `Gründung` - Gründungsjahr des Unternehmens
     - `Website` - Website des Unternehmens
 - `Bestandteile`
     - `id` - ID des Bestandteils
     - `Unternehmen_ID` - ID des Herstellers
     - `Name` - Name des Bestandteils
-    - `Herstellungsort` - Herkunftsland des Bestandteils (2-stelliger Ländercode)
+    - `Herstellungsort` - Herkunftsland des Bestandteils
 - `Allergene`
     - `id` - ID des Allergens
     - `Allergen` - Name des Allergens
