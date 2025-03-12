@@ -1,8 +1,8 @@
-[Name] Bio Joghurt mild 3,8% Fett 150g
-[Barcode] 4104060010958
+[Name] Andechser Natur Bio Joghurt mild 3,8% Fett 500g
+[Barcode] 4104060024757
 [Unternehmen] Andechser Natur
-[Größe] 150g
-[Gesamtgewicht] 173g
+[Größe] 500g
+[Gesamtgewicht] 523g
 [Kategorie] Joghurt
 [Herstellungsort] Andechs Bayern Deutschland
 
@@ -21,7 +21,7 @@
 
 [Bestandteile]
 [Bestandteil] Bio-Milch Alpenvorland
-[Gewicht] 150g
+[Gewicht] 500g
 
 [Transport]
 [Transportdistanz] 38km
