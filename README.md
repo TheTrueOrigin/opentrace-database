@@ -157,6 +157,8 @@ Die Datenbank wird in der Datei `database.db` gespeichert. Sie besteht aus 5 Hau
 - `Produkte`
     - `id` - ID des Produkts
     - `Unternehmen_ID` - ID des Herstellers
+    - `Emission` - Gesamtemission des Produkts
+    - `Distanz` - Gesamtdistanz des Transports/Exports
     - `Name` - Produktname
     - `Barcode` - Barcode des Produkts
     - `Größe` - Größe des Produkts
