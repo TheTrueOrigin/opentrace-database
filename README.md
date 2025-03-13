@@ -4,7 +4,7 @@ Die OpenTrace-Datenbank ist ein Open-Source-Projekt, das es ermöglicht, Informa
 Diese Datenbank wird durch Beiträge von der Open-Source-Community kontinuierlich erweitert. Jeder kann Produkte und deren Details hinzufügen, aktualisieren oder korrigieren, um sicherzustellen, dass die App stets mit den neuesten und genauesten Informationen versorgt wird. Um eine hohe Qualität der Daten zu gewährleisten, erfolgt die Verwaltung der Beiträge über ein GitHub-Repository, in dem alle Änderungen nachvollziehbar sind.
 
 ## Eigenen Beitrag
-1. [Produkt hier hinzufügen](https://github.com/TheTrueOrigin/opentrace-database/new/main?filename=Produkte/neu.txt&value=%5BName%5D%20-%0A%5BBarcode%5D%20-%20%28EAN%2013%29%0A%5BUnternehmen%5D%20-%0A%5BGr%C3%B6%C3%9Fe%5D%20-%20%0A%5BGesamtgewicht%5D%20-%20kg%20oder%20g%0A%5BKategorie%5D%20-%0A%5BHerstellungsort%5D%20-%0A%0A%5BExport%5D%0A%5BExportdistanz%5D%20-%20km%0A%5BExporttyp%5D%20-%0A%0A%5BExportdistanz%5D%20-%20km%20%28mehrere%20Exportabschnitte%20m%C3%B6glich%29%0A%5BExporttyp%5D%20-%0A%0A%5BN%C3%A4hrwerte%5D%0A%5BBrennwert%5D%20-%20in%20kj%20und%20in%20kcal%20%28_kJ%2F_kcal%29%0A%5BFettgehalt%5D%20-%20g%0A%5BGes%C3%A4ttigte%20Fetts%C3%A4uren%5D%20-%20g%0A%5BKohlenhydrate%5D%20-%20g%0A%5BZuckergehalt%5D%20-%20g%0A%5BEiwei%C3%9Fgehalt%5D%20-%20g%0A%5BSalzgehalt%5D%20-%20g%0A%0A%5BBestandteil%5D%20-%0A%5BGewicht%5D%20-%20kg%20oder%20g%0A%0A%5BTransport%5D%0A%5BTransportdistanz%5D%20-%20km%0A%5BTransporttyp%5D%20-%0A%0A%5BBestandteil%5D%20-%0A%5BGewicht%5D%20-%20kg%20oder%20g%0A%0A%5BTransport%5D%0A%5BTransportdistanz%5D%20-%20km%0A%5BTransporttyp%5D%20-%0A%0A%5BTransportdistanz%5D%20-%20mehrere%20Transporteabschnitte%2FBestandteile%20m%C3%B6glich%0A%5BTransporttyp%5D%20-%0A%0A%5BAllergene%5D%0A%5BAllergen%5D%20-%0A%5BAllergen%5D%20merhere...%0A%0A%5BLabels%5D%0A%5BLabel%5D%20-%0A%5BLabel%5D%20mehrere...)
+1. [Produkt hier hinzufügen](https://github.com/TheTrueOrigin/opentrace-database/new/main?filename=Produkte/neu.txt&value=%5BName%5D%20-%0A%5BBarcode%5D%20-%20%28EAN%2013%29%0A%5BUnternehmen%5D%20-%0A%5BGr%C3%B6%C3%9Fe%5D%20-%20%0A%5BGesamtgewicht%5D%20-%20kg%20oder%20g%0A%5BKategorie%5D%20-%0A%5BHerstellungsort%5D%20-%0A%0A%5BExport%5D%0A%5BExportdistanz%5D%20-%20km%0A%5BExporttyp%5D%20-%0A%0A%5BExportdistanz%5D%20-%20km%20%28mehrere%20Exportabschnitte%20m%C3%B6glich%29%0A%5BExporttyp%5D%20-%0A%0A%5BN%C3%A4hrwerte%5D%0A%5BBrennwert%5D%20-%20in%20kj%20und%20in%20kcal%20%28_kJ%2F_kcal%29%0A%5BFettgehalt%5D%20-%20g%0A%5BGes%C3%A4ttigte%20Fetts%C3%A4uren%5D%20-%20g%0A%5BKohlenhydrate%5D%20-%20g%0A%5BZuckergehalt%5D%20-%20g%0A%5BEiwei%C3%9Fgehalt%5D%20-%20g%0A%5BSalzgehalt%5D%20-%20g%0A%0A%5BBestandteil%5D%20-%0A%5BGewicht%5D%20-%20kg%20oder%20g%0A%0A%5BTransport%5D%0A%5BTransportdistanz%5D%20-%20km%0A%5BTransporttyp%5D%20-%0A%0A%5BBestandteil%5D%20-%0A%5BGewicht%5D%20-%20kg%20oder%20g%0A%0A%5BTransport%5D%0A%5BTransportdistanz%5D%20-%20km%0A%5BTransporttyp%5D%20-%0A%0A%5BTransportdistanz%5D%20-%20mehrere%20Transporteabschnitte%2FBestandteile%20m%C3%B6glich%0A%5BTransporttyp%5D%20-%0A%0A%5BAllergene%5D%0A%5BAllergen%5D%20-%0A%5BAllergen%5D%20mehrere...%0A%0A%5BLabels%5D%0A%5BLabel%5D%20-%0A%5BLabel%5D%20mehrere...)
 2. [Unternehmen hier hinzufügen](https://github.com/TheTrueOrigin/opentrace-database/new/main?filename=Unternehmen/neu.txt&value=[Unternehmen]%0A[Name]%20Name%0A[Land]%20Land%0A[Gründung]%20Gründung%0A[Website]%20Website)
 3. [Bestandteil hier hinzufügen](https://github.com/TheTrueOrigin/opentrace-database/new/main?filename=Bestandteile/neu.txt&value=[Bestandteil]%0A[Name]%20Name%0A[Herstellungsort]%20Ort%0A[Unternehmen]%20Unternehmen)
 
@@ -54,7 +54,7 @@ Um ein neues Produkt zu erstellen, folge dem folgenden Format.
 
 > [!TIP]
 > Nährwerte gelten pro 100g, bzw. 100ml.<br>
-> Export-/Transporttypen sind KSF (Kurzstreckenflug/unter 1000km), LSF (Langstreckenflug), LKW, ZUG, SCHIFF, E (Elektro)<br>
+> Export-/Transporttypen sind FLUG, LKW, ZUG, SCHIFF, E (Elektro)<br>
 > Nutze für Distanzen auf Land [Google Maps](maps.google.com), auf See [Airrates](airrates.com) und in der Luft [Distance](distance.to)
 
 Beispiel: `bio_joghurt_mild_3,8%_fett_500g.txt`
@@ -200,10 +200,9 @@ Distanz * Gewicht * Emissionfaktor
 
 Emissionsfaktoren:
 ```
-Kurzsreckenflug: 0.0011
-Langstreckenflug: 0.0005
-Lastkraftwagen: 0.0001
-Zug: 0.00004
-Schiff: 0.00003
+Flug: 0,00154
+Lastkraftwagen: 0,000121
+Zug: 0,000028
+Schiff: 0,000015
 Elektrisch: 0
 ```
