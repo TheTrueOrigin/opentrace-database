@@ -30,7 +30,7 @@ def emission_berechnen(distanz, typ, masse):
     # Straßen 1,05*Distanz
     # Wasser 1,15*Distanz
     # Schienen nichts
-    if typ in ["KSF", "LSF"]:
+    if typ in ["FLUG"]:
         return (distanz+95)*faktoren[typ]*masse
     if typ in ["LKW"]:
         return 1.05*distanz*faktoren[typ]*masse
